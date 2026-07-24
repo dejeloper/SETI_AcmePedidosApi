@@ -118,6 +118,18 @@ Este endpoint simula la respuesta del servicio SOAP sin realizar llamadas extern
 Cliente REST ->  API ASP.NET Core -> (JSON → SOAP/XML) ->  Servicio SOAP -> (SOAP/XML → JSON) -> Cliente REST
 ```
 
+## Testing
+
+Las pruebas unitarias se encuentran en el proyecto `AcmePedidosApi.Tests` y fueron desarrolladas con xUnit, Moq y FluentAssertions.
+
+Para ejecutarlas:
+
+```bash
+dotnet test
+```
+
+---
+
 ## Swagger
 
 Una vez iniciada la aplicación, la documentación de la API está disponible en:

@@ -14,4 +14,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="AcmePedidosApi.Tests\**\*.cs" />
+    <Content Remove="AcmePedidosApi.Tests\**\*" />
+    <None Remove="AcmePedidosApi.Tests\**\*" />
+  </ItemGroup>
+
 </Project>
