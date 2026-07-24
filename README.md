@@ -43,13 +43,13 @@ Si el endpoint cambia, únicamente es necesario modificar este valor.
 ### Clonar el repositorio
 
 ```bash
-git clone https://github.com/dejeloper/SETI_AcmePedidosApi
+git clone https://github.com/dejeloper/SETI_AcmePedidosApi.git
 ```
 
 Ingresar al directorio:
 
 ```bash
-cd AcmePedidosApi
+cd SETI_AcmePedidosApi
 ```
 
 ### Ejecutar con .NET
@@ -59,7 +59,17 @@ dotnet restore
 dotnet run
 ```
 
-La API quedará disponible en la URL indicada por ASP.NET Core (por ejemplo `http://localhost:5117`).
+La API quedará disponible en la URL indicada por ASP.NET Core al iniciar la aplicación (por ejemplo `http://localhost:5117`).
+
+---
+
+## Swagger
+
+Una vez iniciada la aplicación, la documentación de la API está disponible en:
+
+```
+http://localhost:<puerto>/swagger
+```
 
 ---
 
@@ -74,12 +84,38 @@ docker build -t acme-pedidos-api .
 Ejecutar el contenedor:
 
 ```bash
-docker run -p 8080:8080 acme-pedidos-api
+docker run -d --name acme-api -p 8080:8080 acme-pedidos-api
+```
+
+### Verificar la ejecución
+
+Una vez iniciado el contenedor, la API estará disponible en:
+
+```
+http://localhost:8080
+```
+
+Y la documentación Swagger en:
+
+```
+http://localhost:8080/swagger
 ```
 
 ---
 
-## Endpoint principal
+## Testing
+
+Las pruebas unitarias se encuentran en el proyecto `AcmePedidosApi.Tests` y fueron desarrolladas con xUnit, Moq y FluentAssertions.
+
+Para ejecutarlas:
+
+```bash
+dotnet test
+```
+
+---
+
+## Endpoints
 
 ```
 POST /api/pedidos
@@ -110,6 +146,8 @@ POST /api/pedidos/mock
 
 Este endpoint simula la respuesta del servicio SOAP sin realizar llamadas externas.
 
+Para conocer el contrato completo de la API y realizar pruebas interactivas, consulta la documentación disponible en Swagger.
+
 ---
 
 ## Flujo de la aplicación
@@ -118,22 +156,8 @@ Este endpoint simula la respuesta del servicio SOAP sin realizar llamadas extern
 Cliente REST ->  API ASP.NET Core -> (JSON → SOAP/XML) ->  Servicio SOAP -> (SOAP/XML → JSON) -> Cliente REST
 ```
 
-## Testing
-
-Las pruebas unitarias se encuentran en el proyecto `AcmePedidosApi.Tests` y fueron desarrolladas con xUnit, Moq y FluentAssertions.
-
-Para ejecutarlas:
-
-```bash
-dotnet test
-```
-
 ---
 
-## Swagger
+## Referencias
 
-Una vez iniciada la aplicación, la documentación de la API está disponible en:
-
-```
-http://localhost:5117/swagger
-```
+- Crear imágenes Docker para aplicaciones .NET: https://learn.microsoft.com/dotnet/core/docker/build-container

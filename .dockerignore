@@ -1,0 +1,7 @@
+bin/
+obj/
+AcmePedidosApi.Tests/
+TestResults/
+.vs/
+.git/
+*.md
